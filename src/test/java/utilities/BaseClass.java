@@ -21,7 +21,7 @@ public class BaseClass {
 	ReadConfig readconfig = new ReadConfig();
 
 	public String userName = readconfig.getUserName();
-	public String password = readconfig.getPasswrord();
+	public String password = readconfig.getPassword();
 	public String baseURL = readconfig.getApplicationURL();
 	public String platformType = readconfig.getPlatformType();
 	public String browser = readconfig.getBrowser();

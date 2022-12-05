@@ -30,8 +30,8 @@ public class ReadConfig {
 		return userName;
 	}
 
-	public String getPasswrord() {
-		String password = pro.getProperty("Passsword");
+	public String getPassword() {
+		String password = pro.getProperty("Password");
 		return password;
 	}
 
