@@ -4,7 +4,7 @@
 	
 	<test name="Verify Login Functionality">
 		<classes>
-			<class name="com.testCases.TC_LoginTest"></class>
+			<class name="testCases.TC_LoginTest"></class>
 		</classes>
 	</test>
 	

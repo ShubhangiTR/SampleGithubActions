@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testCases.TC_LoginTest">
+      <class name="test.java.testCases.TC_LoginTest">
         <methods>
           <include name="initTest"/>
+          <include name="afterTestMethod"/>
           <include name="quitDriver"/>
           <include name="loginTest"/>
         </methods>
-      </class> <!-- com.testCases.TC_LoginTest -->
+      </class> <!-- testCases.test.java.TC_LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
