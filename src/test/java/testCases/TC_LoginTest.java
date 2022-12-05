@@ -1,5 +1,6 @@
 package testCases;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -31,7 +32,9 @@ public class TC_LoginTest extends BaseClass {
 		loggerNew.info("Clicked on Login Button!!");
 
 		if (webDriver.getTitle().equals("Guru99 Bank Manager HomePage")) {
-			loggerNew.pass("Title is verified successfully!!");
+			System.out.println("Current Title is: " + webDriver.getTitle());
+			System.out.println("Current URL is: " + webDriver.getCurrentUrl());
+			loggerNew.pass("Title is verified successfully!!.");
 			loggerNew.info("Login Test Passed!!");
 			String logText = "Test Case: loginTest Passed";
 			Markup m = MarkupHelper.createLabel(logText, ExtentColor.GREEN);
