@@ -16,18 +16,29 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Write value to Properties-file
-      uses: GuillaumeFalourd/write-java-properties-file@v1
+    - name: Write BROWSER value to Properties-file
+      id: write_property
+      uses: Reedyuk/write-properties@v1.0.1
       with:
         path: './Configurations/configuration.properties'
-        property: |
-          BROWSER
-          UserName
-          Password
-        value: |
-          chrome
-          mngr26593
-          123@123
+        property: BROWSER
+        value: chrome
+
+    - name: Write UserName value to Properties-file
+      id: write_property
+      uses: Reedyuk/write-properties@v1.0.1
+      with:
+        path: './Configurations/configuration.properties'
+        property: UserName
+        value: mngr26593
+
+    - name: Write Password value to Properties-file
+      id: write_property
+      uses: Reedyuk/write-properties@v1.0.1
+      with:
+        path: './Configurations/configuration.properties'
+        property: Password
+        value: 123@123
 
     - name: Read value from Properties-file
       id: read_property
