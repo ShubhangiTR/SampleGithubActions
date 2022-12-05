@@ -17,7 +17,7 @@ jobs:
         cache: maven
 
     - name: Write value to Properties-file
-      uses: christian-draeger/write-properties@1.1.0
+      uses: GuillaumeFalourd/write-java-properties-file@v1
       with:
         path: './Configurations/configuration.properties'
         property: |
