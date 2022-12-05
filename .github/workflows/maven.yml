@@ -51,6 +51,6 @@ jobs:
       run: mvn test --batch-mode
 
     - name: Publish Test Report
-      if : ${{ always() }}
-      uses: scacap/action-surfire-report@v1
+      if: ${{ always() }}
+      uses: scacap/action-surefire-report@v1
 
