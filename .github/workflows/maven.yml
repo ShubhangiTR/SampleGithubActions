@@ -17,7 +17,7 @@ jobs:
         cache: maven
 
     - name: Write BROWSER value to Properties-file
-      id: write_property
+      id: write_property1
       uses: Reedyuk/write-properties@v1.0.1
       with:
         path: './Configurations/configuration.properties'
@@ -25,7 +25,7 @@ jobs:
         value: chrome
 
     - name: Write UserName value to Properties-file
-      id: write_property
+      id: write_property2
       uses: Reedyuk/write-properties@v1.0.1
       with:
         path: './Configurations/configuration.properties'
@@ -33,7 +33,7 @@ jobs:
         value: mngr26593
 
     - name: Write Password value to Properties-file
-      id: write_property
+      id: write_property3
       uses: Reedyuk/write-properties@v1.0.1
       with:
         path: './Configurations/configuration.properties'
