@@ -18,11 +18,11 @@ public class BaseClass {
 	public static WebDriver webDriver;
 	ReadConfig readconfig = new ReadConfig();
 
-	public String userName = readconfig.getUserName();
+	public String userName = readconfig.getUserName().trim();
 	public String password = readconfig.getPassword();
 	public String baseURL = readconfig.getApplicationURL();
 	public String platformType = readconfig.getPlatformType();
-	public String browser = readconfig.getBrowser();
+	public String browser = readconfig.getBrowser().trim();
 
 	public void setUp() {
 		reportSetup();
