@@ -2,7 +2,7 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -16,8 +16,6 @@ public class BaseClass {
 	public static ExtentReports extent;
 	public static ExtentTest loggerNew;
 	public static WebDriver webDriver;
-	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
-
 	ReadConfig readconfig = new ReadConfig();
 
 	public String userName = readconfig.getUserName();
@@ -26,28 +24,21 @@ public class BaseClass {
 	public String platformType = readconfig.getPlatformType();
 	public String browser = readconfig.getBrowser();
 
-	public synchronized WebDriver getDriver() {
-		webDriver = tlDriver.get();
-		return webDriver;
-	}
-
 	public void setUp() {
 		reportSetup();
 		try {
 			if (platformType.equalsIgnoreCase("web")) {
 				if (browser.equalsIgnoreCase("chrome")) {
 					WebDriverManager.chromedriver().setup();
-					tlDriver.set(new ChromeDriver());
+					ChromeOptions options = new ChromeOptions();
+					options.addArguments("--no-sandbox");
+					options.addArguments("--disable-dev-shm-usage");
+					options.addArguments("--headless");
+					webDriver = new ChromeDriver(options);
 					loggerNew.info("Chrome Browser opened successfully!!!");
-				} else if (browser.equalsIgnoreCase("ie")) {
-					WebDriverManager.iedriver().setup();
-					tlDriver.set(new InternetExplorerDriver());
-					loggerNew.info("IE Browser opened successfully!!!");
-				} else
-					loggerNew.info("Invalid Browser: " + browser);
-
-				getDriver().manage().window().maximize();
-				getDriver().get(baseURL);
+				}
+				webDriver.manage().window().maximize();
+				webDriver.get(baseURL);
 				loggerNew.info("URL is opened!!");
 
 			}
@@ -74,7 +65,7 @@ public class BaseClass {
 
 	public void tearDown() {
 		if (platformType.equalsIgnoreCase("web") && !webDriver.equals(null)) {
-			getDriver().quit();
+			webDriver.quit();
 			loggerNew.info("Successfully quit driver!!!");
 		}
 	}

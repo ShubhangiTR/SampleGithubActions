@@ -2,14 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import utilities.BaseClass;
 
 public class LoginPage extends BaseClass {
-
-	public LoginPage() {
-		PageFactory.initElements(getDriver(), this);
-	}
 
 	public void setUserName(String uname) {
 		WebElement userName = webDriver.findElement(By.xpath("//input[@name='uid']"));
