@@ -4,6 +4,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule: ## Schedule the job to run
+    - cron: '36 18 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
