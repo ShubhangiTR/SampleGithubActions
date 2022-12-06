@@ -24,7 +24,7 @@ jobs:
       with:
         path: './Configurations/configuration.properties'
         property: BROWSER
-        value: chrome
+        value: chrom
 
     - name: Write UserName value to Properties-file
       id: write_property2
