@@ -35,7 +35,7 @@ public class BaseClass {
 					options.addArguments("--disable-dev-shm-usage");
 					options.addArguments("--headless");
 					webDriver = new ChromeDriver(options);
-					loggerNew.info("Chrome Browser opened successfully!!!");
+					loggerNew.info("Chrome Browser started successfully!!!");
 				}
 				webDriver.manage().window().maximize();
 				webDriver.get(baseURL);
