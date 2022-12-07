@@ -12,6 +12,7 @@ on:
         description: 'Input browser (chrome or IE)'
         required: true
         default: chrome
+        type: string
       url:
         description: 'URL'
         required: true
