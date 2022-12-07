@@ -44,7 +44,7 @@ jobs:
       uses: Reedyuk/write-properties@v1.0.1
       with:
           path: './Configurations/configuration.properties'
-          property: URL
+          property: WEB_URL
           value: ${{ github.event.inputs.url }}
 
     - name: Write UserName value to Properties-file
@@ -68,7 +68,7 @@ jobs:
       uses: christian-draeger/read-properties@1.1.0
       with:
         path: './Configurations/configuration.properties'
-        properties: BROWSER URL UserName Password
+        properties: BROWSER WEB_URL UserName Password
 
     - name: Build and Test with Maven
       run: mvn clean test
