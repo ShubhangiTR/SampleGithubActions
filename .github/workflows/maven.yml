@@ -36,7 +36,7 @@ jobs:
       with:
         path: './Configurations/configuration.properties'
         property: BROWSER
-        value: ${{ github.event.inputs.browser }}
+        value: ${{ inputs.browser }}
 
     - name: Write URL value to Properties-file
       id: write_property2
@@ -44,7 +44,7 @@ jobs:
       with:
           path: './Configurations/configuration.properties'
           property: WEB_URL
-          value: ${{ github.event.inputs.url }}
+          value: ${{ inputs.url }}
 
     - name: Write UserName value to Properties-file
       id: write_property3
