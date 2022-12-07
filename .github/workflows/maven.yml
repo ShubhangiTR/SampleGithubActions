@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Workflow dispatch inputs
 on:
   push:
     branches: [ "master" ]
@@ -6,6 +6,19 @@ on:
     branches: [ "master" ]
 #  schedule: ## Schedule the job to run
 #    - cron: '*/5 * * * *'
+
+  #manually run workflow
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Input browser (chrome or IE)'
+        required: true
+        default: chrome
+      url:
+        description: 'URL'
+        required: true
+        default: https:\/\/demo.guru99.com\/v3\/index.php
+        type: url
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +37,15 @@ jobs:
       with:
         path: './Configurations/configuration.properties'
         property: BROWSER
-        value: chrome
+        value: ${{ github.event.inputs.browser }}
+
+    - name: Write URL value to Properties-file
+      id: write_property2
+      uses: Reedyuk/write-properties@v1.0.1
+      with:
+          path: './Configurations/configuration.properties'
+          property: URL
+          value: ${{ github.event.inputs.url }}
 
     - name: Write UserName value to Properties-file
       id: write_property2
@@ -32,7 +53,7 @@ jobs:
       with:
         path: './Configurations/configuration.properties'
         property: UserName
-        value: mngr26593
+        value: ${{ secrets.USERNAME }}
 
     - name: Write Password value to Properties-file
       id: write_property3
@@ -40,17 +61,17 @@ jobs:
       with:
         path: './Configurations/configuration.properties'
         property: Password
-        value: 123@123
+        value: ${{ secrets.PASSWORD }}
 
     - name: Read value from Properties-file
       id: read_property
       uses: christian-draeger/read-properties@1.1.0
       with:
         path: './Configurations/configuration.properties'
-        properties: BROWSER UserName Password
+        properties: BROWSER URL UserName Password
 
     - name: Build and Test with Maven
-      run: mvn test --batch-mode
+      run: mvn test
 
     - name: Publish Test Report
       if: ${{ always() }}
