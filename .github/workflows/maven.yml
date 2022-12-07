@@ -2,20 +2,22 @@ name: Workflow dispatch inputs
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-#  schedule: ## Schedule the job to run
-#    - cron: '*/5 * * * *'
-  inputs:
-    browser:
+    inputs:
+      browser:
         description: 'Input browser (chrome or IE)'
         required: true
         default: chrome
-    url:
+      url:
         description: 'URL'
         required: true
         default: https:\/\/demo.guru99.com\/v3\/index.php
         type: url
+
+  pull_request:
+    branches: [ "master" ]
+#  schedule: ## Schedule the job to run
+#    - cron: '*/5 * * * *'
+
 jobs:
   build:
     runs-on: ubuntu-latest
