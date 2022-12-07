@@ -6,15 +6,12 @@ on:
     branches: [ "master" ]
 #  schedule: ## Schedule the job to run
 #    - cron: '*/5 * * * *'
-
-  #manually run workflow
-  workflow_dispatch:
-    inputs:
-      browser:
+  inputs:
+    browser:
         description: 'Input browser (chrome or IE)'
         required: true
         default: chrome
-      url:
+    url:
         description: 'URL'
         required: true
         default: https:\/\/demo.guru99.com\/v3\/index.php
